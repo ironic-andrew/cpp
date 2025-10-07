@@ -7,7 +7,6 @@
 int calculate_parity(int value, int num_bits) {
     int parity = 0;
     for (int i = 0; i < num_bits; ++i) {
-        // Зсуваємо кожен біт і додаємо його до parity за допомогою XOR
         parity ^= ((value >> i) & 1);
     }
     return parity;

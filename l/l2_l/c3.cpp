@@ -3,7 +3,7 @@
 #include <vector>
 #include <iomanip>
 
-// (Функція calculate_parity залишається без змін)
+
 int calculate_parity(int value, int num_bits) {
     int parity = 0;
     for (int i = 0; i < num_bits; ++i) {
@@ -23,28 +23,26 @@ struct EncryptedCharFields {
 };
 
 
-// Об'єднання для доступу до даних як до структури або 16-бітного числа
+
 union EncryptedData {
     unsigned short value;
     struct EncryptedCharFields fields;
 };
 
-// Оновлена функція шифрування символу
+
 unsigned short encrypt_char(char c, int row_num, int col_num) {
     EncryptedData data;
 
-    // Заповнення полів структури
+   
     data.fields.row_num = row_num;
     data.fields.ascii_high = (static_cast<int>(c) >> 4) & 0x0F;
     data.fields.ascii_low = static_cast<int>(c) & 0x0F;
     data.fields.col_num = col_num;
 
-    // Обчислення та встановлення бітів парності
-    // Перший біт парності (для row_num та ascii_high)
     int parity1_value = data.fields.row_num | (data.fields.ascii_high << 4);
     data.fields.parity1 = calculate_parity(parity1_value, 8);
 
-    // Другий біт парності (для ascii_low та col_num)
+   
     int parity2_value = data.fields.ascii_low | (data.fields.col_num << 4);
     data.fields.parity2 = calculate_parity(parity2_value, 6);
 
@@ -65,7 +63,7 @@ int main() {
         std::getline(std::cin, text_data[i]);
     }
 
-    // Доповнюємо рядки пробілами
+    
     for (size_t i = 0; i < text_data.size(); ++i) {
         if (text_data[i].length() < LINE_LENGTH) {
             text_data[i].resize(LINE_LENGTH, ' ');

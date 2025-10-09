@@ -53,7 +53,7 @@ map<char, string> morse = {
 
         switch (choice) {
             case 1:{
-                int n, i, value, s;
+                int n, i, value, s = 0;
                 vector<int> numbers;
                 
                 cout << "\nВедіть значення: ";
@@ -77,7 +77,7 @@ map<char, string> morse = {
 
                 s = s/numbers.size();
 
-                cout << "Результат: " << s ;
+                cout << "\nРезультат: " << s  << "\n";
 
                 break;
 

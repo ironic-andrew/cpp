@@ -132,7 +132,7 @@ public:
 
         if(other1.n * other1.m > other2.n * other2.m){
 
-            cout << "\nПерща матриця більша\n";
+            cout << "\nПерша матриця більша\n";
 
         }else if (other1.n * other1.m < other2.n * other2.m){
 

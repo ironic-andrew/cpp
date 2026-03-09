@@ -12,7 +12,6 @@ year_month_day getToday() {
 }
 
 
-
 class pasport{
 
     public:
@@ -71,9 +70,6 @@ class pasport{
 
         }
     
-    
-
-    
         void show(){
             
             if(vec.empty()){
@@ -107,11 +103,6 @@ class pasport{
             
 
         };
-        
-
-
-    
-
 
 };
 
@@ -259,17 +250,8 @@ pasport p;
 
             }
 
-
-
-        
-
         }
     }
-
-
-
-
-
 
     return 0;
 

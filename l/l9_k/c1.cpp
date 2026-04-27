@@ -1,13 +1,33 @@
 #include <iostream>
 #include <fstream>
+#include <windows.h>
 #include <vector>
 #include <cmath>
+#include <filesystem>
 using namespace std;
 
+filesystem::path getExeDir() {
+    char buffer[MAX_PATH];
+    GetModuleFileNameA(NULL, buffer, MAX_PATH);
+    return filesystem::path(buffer).parent_path();
+}
+
+
+
 int main() {
-    ifstream file("dat7.dat");
+    
+    filesystem::path base = getExeDir();
+
+    ifstream file(base / "dat7.dat");
     vector<string> text;
     string texti;
+
+    /*
+    if (!file.is_open()) {
+        cout << "Помилка відкриття файлу!" << endl;
+    return 1;
+    }
+    */
 
     while (file >> texti) {
         text.push_back(texti);
@@ -18,7 +38,7 @@ int main() {
 
     while(true){
 
-        cout << "Введіть один з перелічених шифрів: ";
+        cout << "Введіть один з перелічених шифрів: \n";
         for(int i = 0; i < text.size(); ++i){
             cout << text[i] << "\n";
         }
@@ -43,7 +63,7 @@ int main() {
             string text_i;
             text_i = text[index];
 
-            ifstream file("dat4.dat");
+            ifstream file(base / "dat4.dat");
             vector<double> x, t_x, u_x;
             double xi, t_xi, u_xi;
 
@@ -53,7 +73,7 @@ int main() {
                 u_x.push_back(u_xi);
             }
 
-            ifstream file_y("dat5.dat");
+            ifstream file_y(base / "dat5.dat");
             vector<double> y, t_y, u_y;
             double yi, t_yi, u_yi;
 
@@ -63,7 +83,7 @@ int main() {
                 u_y.push_back(u_yi);
             }
 
-            ifstream file_z("dat6.dat");
+            ifstream file_z(base / "dat6.dat");
             vector<double> z, t_z, u_z;
             double zi, t_zi, u_zi;
 

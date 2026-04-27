@@ -59,7 +59,7 @@ int main(){
             case 2:{
 
                 cout << "\nУдачи!\n";
-                break;
+                return 0;
 
             }
 

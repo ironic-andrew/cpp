@@ -43,7 +43,7 @@ class convert{
 
     public:
         void convert_in_text(){
-
+            int f_t_i = 0, s_t_i = 0;
 
             while(true){
                 cout << "Введіть цифри: " << endl;
@@ -131,8 +131,7 @@ class convert{
                 result_s += tens[rem / 10] + " " + ones[rem % 10]; 
             }
 
-
-            cout << "Літрів - " << result_f << " мілілітрів - " << result_s << endl;
+            cout << "Літрів - " << result_f << "\nМілілітрів - " << result_s << endl;
 
         };
         

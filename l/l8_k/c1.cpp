@@ -32,7 +32,7 @@ void filter(string text){
 
             } else {
                 
-                cout << c << "ok\n";
+                //cout << c << "ok\n";
             }
 
         }

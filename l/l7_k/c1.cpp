@@ -480,7 +480,7 @@ int main(){
 
             case 6:{
 
-                f.end();
+                //f.end();
                 cout << "\nУдачи!\n";
                 return 0;
 

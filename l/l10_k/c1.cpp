@@ -2,8 +2,17 @@
 #include <fstream>
 #include <vector>
 #include <sstream>
+#include <filesystem>
+#include <windows.h>
 using namespace std;
 
+filesystem::path getExeDir() {
+    char buffer[MAX_PATH];
+    GetModuleFileNameA(NULL, buffer, MAX_PATH);
+    return filesystem::path(buffer).parent_path();
+}
+
+filesystem::path base = getExeDir();
 
 class complex_c{
 
@@ -29,7 +38,7 @@ class complex_c{
         void start_c()
         {
 
-            ifstream file_c("complex.txt");
+            ifstream file_c(base / "complex.txt");
             while (file_c >> f_n_i >> symb_i >> s_n_i >> i_symb_i) {
                 complex_s com;
                 com.f_n = f_n_i; 
@@ -40,6 +49,12 @@ class complex_c{
                 c.push_back(com);
 
             }
+            /*
+            if (!file_c.is_open()) {
+                cout << "Помилка відкриття файлу!" << endl;
+                
+            }
+            */
 
             cout << "Комлексні числа: " << endl;
 
@@ -51,6 +66,8 @@ class complex_c{
 
             file_c.close();
         };
+
+        
 
 
 };
@@ -77,7 +94,7 @@ class fraction_f{
         void start_f()
         {
 
-            ifstream file_f("fraction.txt");
+            ifstream file_f(base / "fraction.txt");
             while (file_f >> f_n_i >> symb_i >> s_n_i) {
                 fraction_s fra;
                 fra.f_n = f_n_i; 
@@ -115,7 +132,7 @@ class vector_v{
 
         void start_v()
         {
-            ifstream file_v("vector.txt");
+            ifstream file_v(base / "vector.txt");
             while (file_v >> n_i) {
 
                 count ++;
@@ -142,9 +159,6 @@ class vector_v{
 
             }
 
-            for (int i = 0; i < n; i++) {
-                delete[] arr[i];
-            }
             delete[] arr;
 
             file_v.close();
@@ -165,12 +179,11 @@ class matrix_m{
     public:
 
         void start_m(){
-
-            ifstream file_m("matrix.txt");
+            ifstream file_m(base / "matrix.txt");
             while (getline(file_m, line)){
 
                 count_n++;
-
+            
             }
 
             file_m.clear();
@@ -182,6 +195,7 @@ class matrix_m{
                 count_m++;
 
             }
+
 
             n = count_n;
             m = count_m;
@@ -211,10 +225,11 @@ class matrix_m{
                 cout << endl;
 
             }
-
+            /*
             for (int i = 0; i < n; i++) {
                 delete[] arr[i];
             }
+            */
             delete[] arr;
 
             file_m.close();
@@ -225,8 +240,6 @@ class matrix_m{
 
 
 };
-
-class 
 
 int main(){
 
@@ -239,7 +252,6 @@ int main(){
     f.start_f();
     v.start_v();
     m.start_m();
-
 
     return 0;
 }

@@ -62,11 +62,11 @@ class pasport{
 
             Pasport p = {name_main, surename_main, middle_name_main, birthday_main, birthmonth_main, birthyear_main, age, birthplace_main, sex_main, nationality_main};
             
-            cout << "\n\ndsajdhsajk: " << vec.size();
+            //cout << "\n\ndsajdhsajk: " << vec.size();
             
             vec.push_back(p);
  
-            cout << "\n\ndsajdhasdjkkjkdaskjasd: " << vec.size();
+            //cout << "\n\ndsajdhasdjkkjkdaskjasd: " << vec.size();
 
         }
     
